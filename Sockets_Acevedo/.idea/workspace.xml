@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="870cb6ea-3920-470b-b005-6f26a6ea0084" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servidor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Servidor.py" afterDir="false" />
-    </list>
+    <list default="true" id="870cb6ea-3920-470b-b005-6f26a6ea0084" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +13,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Servidor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="903">
+            <state relative-caret-position="1092">
               <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -210,18 +206,17 @@
       <option name="presentableId" value="Default" />
       <updated>1609802889315</updated>
       <workItem from="1609802931381" duration="5628000" />
-      <workItem from="1609879137719" duration="941000" />
+      <workItem from="1609879137719" duration="1352000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6569000" />
+    <option name="totallyTimeSpent" value="6980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1429" y="42" width="1799" height="1010" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19263946" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19263946" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -273,7 +268,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Servidor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
+        <state relative-caret-position="1092">
           <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
