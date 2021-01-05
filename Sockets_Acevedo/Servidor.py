@@ -1,22 +1,18 @@
 import socket
 import threading
 import sys
-import json
+import pickle
 
 class Servidor():
-
-    molde_mensaje = {'id': 0, 'nombre': 'Servidor'}
-
     def __init__(self, host="localhost", puerto=3000):
-        self.cliente = None
-        self.conexionEstablecida = False
+        self.clientes = []
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind((str(host), int(puerto)))
         self.sock.listen(5)
         self.sock.setblocking(False)
 
         aceptar = threading.Thread(target=self.aceptar_conexiones)
-        procesar = threading.Thread(target=self.procesar_conexion)
+        procesar = threading.Thread(target=self.procesar_conexiones)
 
         aceptar.daemon = True
         aceptar.start()
@@ -25,42 +21,51 @@ class Servidor():
         procesar.start()
 
         while True:
-            if(self.conexionEstablecida):
-                mensaje = input()
-                if mensaje != "salir":
-                    self.enviar_mensaje(mensaje)
-                else:
-                    self.sock.close()
-                    sys.exit()
+            mensaje = input()
+            if mensaje != "salir":
+                self.enviar_mensaje(mensaje)
+            else:
+                self.sock.close()
+                sys.exit()
 
-    def aceptar_conexiones(self):
-        print("ESPERANDO UNA CONEXIÓN...\n")
-        while True:
+
+    def enviar_mensaje_todos(self, mensaje, cliente):
+        for c in self.clientes:
             try:
-                conexion, direccion = self.sock.accept()
-                conexion.setblocking(False)
-                self.cliente = conexion
-                self.conexionEstablecida = True
-                print("NUEVO CLIENTE CONECTADO...\n")
+                if c != cliente:
+                    c.send(pickle.dumps(mensaje))
             except:
-                pass
-
+                self.clientes.remove(c)
 
     def enviar_mensaje(self, mensaje):
-        self.molde_mensaje['id'] = mensaje
         try:
-            if self.conexionEstablecida:
-                self.sock.send(bytes(json.dumps(self.molde_mensaje), encoding="utf-8"))
+            self.clientes[0].send(pickle.dumps(mensaje))
         except:
             pass
 
 
-    def procesar_conexion(self):
+    def aceptar_conexiones(self):
         while True:
             try:
-                datos = self.cliente.recv(1024)
-                if datos:
-                    print(datos.decode("utf-8"))
+                conexion, direccion = self.sock.accept()
+                conexion.setblocking(False)
+                self.clientes.append(conexion)
+                print("Cliente conectado")
             except:
                 pass
+
+
+
+
+    def procesar_conexiones(self):
+        print ("EMPEZANDO A CONTROLAR LAS CONEXIONES..")
+        while True:
+            if len(self.clientes) > 0:
+                for c in self.clientes:
+                    try:
+                        datos = c.recv(1024)
+                        if datos:
+                            print(pickle.loads(datos))
+                    except:
+                        pass
 s = Servidor()
